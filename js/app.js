@@ -1,22 +1,34 @@
 /*
  * Create a list that holds all of your cards
  */
-
-var cards = ['fa-diamond', 'fa-diamond',
-	'fa-paper-plane-o', 'fa-paper-plane-o',
-	'fa-anchor', 'fa-anchor',
-	'fa-bolt', 'fa-bolt',
-	'fa-cube', 'fa-cube',
-	'fa-leaf', 'fa-leaf',
-	'fa-bomb', 'fa-bomb',
-	'fa-bolt', 'fa-bolt',
-	'fa-bicycle', 'fa-bicycle',
+const card = document.getElementsByClassName('card');
+const cards = ["fa-diamond", "fa-diamond",
+	"fa-paper-plane-o", "fa-paper-plane-o",
+	"fa-anchor", "fa-anchor",
+	"fa-bolt", "fa-bolt",
+	"fa-cube", "fa-cube",
+	"fa-leaf", "fa-leaf",
+	"fa-bomb", "fa-bomb",
+	"fa-bolt", "fa-bolt",
+	"fa-bicycle", "fa-bicycle",
 
 ];
 
-function generateCard(cards) {
-	return '<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>';
+
+
+const deck = document.querySelector('.deck');
+
+function generateCard(card) {
+
+for (let i=0,  tot=cards.length; i < tot; i++) {
+  	let result = (cards[i]);
+	return `<li class="card" data-card= "${card}"> <i class="fa ${tot}"</i></li>`;
+
+	}
 }
+	
+	//return list.dataset.card;
+
 
 
 /*
@@ -45,22 +57,24 @@ function shuffle(array) {
 //Watched the tutorial with Mike Wales and utilized some of his inofrmation shared in the Tutorial
 
 function initGame() {
-	var deck = document.querySelector('.deck');
-	var moveCounter = document.querySelector('.moves');
-	var cardHTML = shuffle(cards).map(function (card) {
+
+	//var moveCounter = document.querySelector('.moves');
+	let cardHTML = shuffle(cards).map(function (card) {
 		return generateCard(card);
+
 	});
-	moves = 0;
-	moveCounter.innerText = moves;
-	
+
+	//moves = 0;
+	//moveCounter.innerText = moves;
+
 	deck.innerHTML = cardHTML.join('');
 }
 
 initGame();
 
-var allCards = document.querySelectorAll('.card');
-var openCards = [];
-var moves = 0;
+let allCards = document.querySelectorAll('.card');
+let openCards = [];
+//var moves = 0;
 
 allCards.forEach(function (card) {
 	card.addEventListener('click', function (e) {
@@ -72,7 +86,7 @@ allCards.forEach(function (card) {
 
 
 
-			//if cards don't match go away
+
 			if (openCards.length == 2) {
 				if (openCards[0].dataset.card == openCards[1].dataset.card) {
 
@@ -83,8 +97,8 @@ allCards.forEach(function (card) {
 					openCards[1].classList.add('match');
 					openCards[1].classList.add('open');
 					openCards[1].classList.add('show');
-					
-					openCards = [];	
+
+					openCards = [];
 				} else {
 
 
@@ -98,7 +112,7 @@ allCards.forEach(function (card) {
 						openCards = [];
 					}, 1000);
 				}
-				moves += 1;
+				//moves += 1;
 			}
 
 		}
