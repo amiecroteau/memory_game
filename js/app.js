@@ -26,43 +26,50 @@ function shuffle(array) {
 	return array;
 }
 
+//Watched the tutorial with Mike Wales and utilized some of his inofrmation shared in the Tutorial
 
 
-const cards = document.getElementsByClassName(".card");
-
-function flipCards() {
-	
-	console.log('Yes!');
-	console.log(cards);
-	cards[0].setAttribute("class", "match");
-
-
-}
 
 const allCards = document.querySelectorAll('.card');
-
-allCards.forEach(function(card){
-	card.addEventListener('click', function(e){
-		card.classList.add('open', 'show');				 
-						 
-	});	
-});
-
-//flipCards();
-/*for (var i = 0 ; i < cards; i++) {
-   comment[i].addEventListener('click' , flipCards() , false ) ; 
-}
-//cards[0].addEventListener('click', flipCards());
+const openCards = [];
 
 
+allCards.forEach(function (card) {
+			card.addEventListener('click', function (e) {
+				if (openCards.length >= 2) {
+					setTimeout(function () {
+						openCards.forEach(function (card) {
+							card.classList.remove('open', 'show');
+						})
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+					}, 1000);
+
+
+				} else {
+					openCards.push(card);
+					card.classList.add('open', 'show');
+				}
+
+
+
+			});
+
+
+			//flipCards();
+			/*for (var i = 0 ; i < cards; i++) {
+			   comment[i].addEventListener('click' , flipCards() , false ) ; 
+			}
+			//cards[0].addEventListener('click', flipCards());
+
+
+
+			/*
+			 * set up the event listener for a card. If a card is clicked:
+			 *  - display the card's symbol (put this functionality in another function that you call from this one)
+			 *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+			 *  - if the list already has another card, check to see if the two cards match
+			 *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+			 *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+			 *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+			 *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+			 */
