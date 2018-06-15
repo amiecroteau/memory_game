@@ -1,7 +1,6 @@
-/*
- * Create a list that holds all of your cards
- */
-const card = document.getElementsByClassName('card');
+
+
+
 const cards = ["fa-diamond", "fa-diamond",
 	"fa-paper-plane-o", "fa-paper-plane-o",
 	"fa-anchor", "fa-anchor",
@@ -10,35 +9,32 @@ const cards = ["fa-diamond", "fa-diamond",
 	"fa-leaf", "fa-leaf",
 	"fa-bomb", "fa-bomb",
 	"fa-bolt", "fa-bolt",
-	"fa-bicycle", "fa-bicycle",
-
 ];
 
 
 
 const deck = document.querySelector('.deck');
 
-function generateCard(card) {
-
-for (let i=0,  tot=cards.length; i < tot; i++) {
-  	let result = (cards[i]);
-	return `<li class="card" data-card= "${card}"> <i class="fa ${tot}"</i></li>`;
-
-	}
-}
+function generateCard (){
 	
-	//return list.dataset.card;
+    for(let i=0; i< cards.length;i++)
+    {
+	    let list=document.createElement("li");
+	
+		deck.appendChild(list);
+		list.className="card";
+		
+		let info=document.createElement("i");
+		
+		list.appendChild(info);
+		info.className=`fa ${cards[i]}`;
+		
+	}
+	
+}
 
+generateCard ();
 
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
-// Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
 	var currentIndex = array.length,
 		temporaryValue, randomIndex;
@@ -54,41 +50,26 @@ function shuffle(array) {
 	return array;
 }
 
-//Watched the tutorial with Mike Wales and utilized some of his inofrmation shared in the Tutorial
 
-function initGame() {
 
-	//var moveCounter = document.querySelector('.moves');
-	let cardHTML = shuffle(cards).map(function (card) {
-		return generateCard(card);
 
-	});
-
-	//moves = 0;
-	//moveCounter.innerText = moves;
-
-	deck.innerHTML = cardHTML.join('');
-}
-
-initGame();
+const card = document.getElementsByClassName('card');
 
 let allCards = document.querySelectorAll('.card');
 let openCards = [];
-//var moves = 0;
 
 allCards.forEach(function (card) {
-	card.addEventListener('click', function (e) {
-
+	console.log('itworks');
+	card.addEventListener('click', function () {
+		
 		if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {
 			openCards.push(card);
 			card.classList.add('open', 'show');
-
-
-
-
+			
 
 			if (openCards.length == 2) {
 				if (openCards[0].dataset.card == openCards[1].dataset.card) {
+					
 
 					openCards[0].classList.add('match');
 					openCards[0].classList.add('open');
@@ -101,7 +82,7 @@ allCards.forEach(function (card) {
 					openCards = [];
 				} else {
 
-
+					console.log('itworks2');
 					//no match
 					setTimeout(function () {
 						openCards.forEach(function (card) {
@@ -118,25 +99,15 @@ allCards.forEach(function (card) {
 		}
 
 	});
+
+
 });
 
-
-
-//flipCards();
-/*for (var i = 0 ; i < cards; i++) {
-   comment[i].addEventListener('click' , flipCards() , false ) ; 
-}
-//cards[0].addEventListener('click', flipCards());
+	
+	
+	
+	
 
 
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+
