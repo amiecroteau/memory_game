@@ -11,7 +11,10 @@ const cards = ["fa-diamond", "fa-diamond",
 
 ];
 
+var moveCounter = document.querySelector('.moves');	
+let moves = 0;
 
+	
 
 const deck = document.querySelector('.deck');
 
@@ -71,9 +74,6 @@ generateCard();
 
 Shuffle(cards);
 
-
-
-
 //The following logic was helped along after watching the Mike Wales Youtube walkthrough
 
 let allCards = document.querySelectorAll('.card');
@@ -108,11 +108,14 @@ allCards.forEach(function (card) {
 							}, 500);
 							//no match
 							openCards = [];
+							moves += 1;
+							moveCounter.innerHTML = moves;
 						}
-						//moves += 1;
+					
 					}
 
 				}
 
 			});
 });
+
