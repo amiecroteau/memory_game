@@ -1,5 +1,5 @@
 
-
+const card = document.getElementsByClassName('card');
 const cards = ["fa-diamond", "fa-diamond",
 	"fa-paper-plane-o", "fa-paper-plane-o",
 	"fa-anchor", "fa-anchor",
@@ -8,7 +8,7 @@ const cards = ["fa-diamond", "fa-diamond",
 	"fa-leaf", "fa-leaf",
 	"fa-bomb", "fa-bomb",
 	"fa-bicycle", "fa-bicycle",
-			   	
+
 ];
 
 
@@ -19,14 +19,16 @@ const deck = document.querySelector('.deck');
 //function was not working for me and providing an error for array.length
 
 function Shuffle(o) {
-	for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+	for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 	return o;
 };
 
 
-cards.sort(function() { return 0.50 - Math.random() });
+cards.sort(function () {
+	return 0.25 - Math.random()
+});
 
-Shuffle(cards);
+
 
 
 /*
@@ -59,64 +61,58 @@ function generateCard() {
 		let info = document.createElement("i");
 
 		list.appendChild(info);
-		info.className = `fa ${cards[i]} "data-cards=" ${cards}`;
-		
+		info.className = `fa ${cards[i]} "data-set=" ${cards}`;
+
 	}
 
 }
 
 generateCard();
 
+Shuffle(cards);
+
+
 
 
 //The following logic was helped along after watching the Mike Wales Youtube walkthrough
 
-const card = document.getElementsByClassName('card');
 let allCards = document.querySelectorAll('.card');
 let openCards = [];
 
 
 allCards.forEach(function (card) {
-
-	card.addEventListener('click', function () {
-
-		if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {
-			openCards.push(card);
-			card.classList.add('open', 'show');
-					
-
-			if (openCards.length == 2) {
-				if (openCards[0].dataset.card == openCards[1].dataset.card) {
-					
-
-					openCards[0].classList.add('match');
-					openCards[0].classList.add('open');
-					openCards[0].classList.add('show');
-
-					openCards[1].classList.add('match');
-					openCards[1].classList.add('open');
-					openCards[1].classList.add('show');
-
-					openCards = [];
-				} else {
-					setTimeout(function () {
-						openCards.forEach(function (card) {
-							card.classList.remove('open', 'show');
-						});
+			card.addEventListener('click', function (e) {
+				if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {
+					openCards.push(card);
+					card.classList.add('open', 'show');
 
 
-						openCards = [];
-					}, 1000);
+					if (openCards.length == 2) {
+						if (openCards[0].innerHTML === openCards[1].innerHTML) {
 
-					//no match
+							openCards[0].classList.add('match');
+							openCards[0].classList.add('open');
+							openCards[0].classList.add('show');
+
+							openCards[1].classList.add('match');
+							openCards[1].classList.add('open');
+							openCards[1].classList.add('show');
+
+							openCards = [];
+						} else {
+							setTimeout(function (openCards) {
+								allCards.forEach(function (card) {
+									card.classList.remove('open', 'show');
+								});
+							
+							}, 500);
+							//no match
+							openCards = [];
+						}
+						//moves += 1;
+					}
 
 				}
-				//moves += 1;
-			}
 
-		}
-
-	});
-
-
+			});
 });
