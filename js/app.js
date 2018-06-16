@@ -1,4 +1,3 @@
-
 const card = document.getElementsByClassName('card');
 const cards = ["fa-diamond", "fa-diamond",
 	"fa-paper-plane-o", "fa-paper-plane-o",
@@ -11,12 +10,19 @@ const cards = ["fa-diamond", "fa-diamond",
 
 ];
 
-var moveCounter = document.querySelector('.moves');	
+
+var moveCounter = document.querySelector('.moves');
 let moves = 0;
 
-	
+
 
 const deck = document.querySelector('.deck');
+
+const refresh = document.querySelector('.restart');
+refresh.addEventListener('click',function () {
+	window.location.reload(false);
+});
+
 
 //referenced this shuffle function by https://css-tricks.com/snippets/javascript/shuffle-array/ as the provided
 //function was not working for me and providing an error for array.length
@@ -81,41 +87,78 @@ let openCards = [];
 
 
 allCards.forEach(function (card) {
-			card.addEventListener('click', function (e) {
-				if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {
-					openCards.push(card);
-					card.classList.add('open', 'show');
+	card.addEventListener('click', function (e) {
+		if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {
+			openCards.push(card);
+			card.classList.add('open', 'show');
 
 
-					if (openCards.length == 2) {
-						if (openCards[0].innerHTML === openCards[1].innerHTML) {
+			if (openCards.length == 2) {
 
-							openCards[0].classList.add('match');
-							openCards[0].classList.add('open');
-							openCards[0].classList.add('show');
+				//checking to see if the cards match
+				if (openCards[0].innerHTML === openCards[1].innerHTML) {
 
-							openCards[1].classList.add('match');
-							openCards[1].classList.add('open');
-							openCards[1].classList.add('show');
+					openCards[0].classList.add('match');
+					openCards[0].classList.add('open');
+					openCards[0].classList.add('show');
 
-							openCards = [];
-						} else {
-							setTimeout(function (openCards) {
-								allCards.forEach(function (card) {
-									card.classList.remove('open', 'show');
-								});
-							
-							}, 500);
-							//no match
-							openCards = [];
-							moves += 1;
-							moveCounter.innerHTML = moves;
-						}
-					
-					}
+					openCards[1].classList.add('match');
+					openCards[1].classList.add('open');
+					openCards[1].classList.add('show');
+
+					openCards = [];
+				} else {
+
+					//no match
+					setTimeout(function (openCards) {
+						allCards.forEach(function (card) {
+							card.classList.remove('open', 'show');
+						});
+
+					}, 1500);
+
+					openCards = [];
+					moves += 1;
+					moveCounter.innerHTML = moves;
 
 				}
 
-			});
+				starCounter();
+			}
+		}
+	});
 });
+
+
+//Thanks to fellow Fender Matthew Crawford's walkthrough, I utilized style.display property and his for of for statement to work.https://matthewcranford.com/memory-game-walkthrough-part-5-moves-stars/
+
+let stars = document.querySelectorAll('.stars li');
+
+function starCounter() {
+
+for (let a = 0; a<20; a++){
+	if (moves > 10) {
+
+		console.log(stars);
+
+		for (star of stars) {
+			stars[2].style.display = 'none';
+		}
+
+	} else if (moves > 8) {
+
+		for (star of stars) {
+			stars[1].style.display = 'none';
+		}
+	} else if (moves > 5){
+		for (star of stars) {
+			stars[0].style.display = 'none';
+		}
+	}
+}
+
+}
+
+
+
 
