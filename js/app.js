@@ -101,9 +101,6 @@ allCards.forEach(function (card) {
 					openCards[1].classList.add('show');
 					
 					
-					if(openCards.length == 16){
-						console.log('game over');
-					}
 					
 					openCards = [];
 
