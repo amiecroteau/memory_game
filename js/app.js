@@ -9,35 +9,29 @@ const cards = ["fa-diamond", "fa-diamond",
 	"fa-bicycle", "fa-bicycle",
 
 ];
-
-
-var moveCounter = document.querySelector('.moves');
-let moves = 0;
-
-
-
 const deck = document.querySelector('.deck');
 
+//create move counter
+const moveCounter = document.querySelector('.moves');
+let moves = 0;
+
+//refresh game
 const refresh = document.querySelector('.restart');
-refresh.addEventListener('click',function () {
+refresh.addEventListener('click', function restart () {
 	window.location.reload(false);
 });
 
 
 //referenced this shuffle function by https://css-tricks.com/snippets/javascript/shuffle-array/ as the provided
 //function was not working for me and providing an error for array.length
-
+//Shuffle cards
 function Shuffle(o) {
 	for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 	return o;
 };
-
-
 cards.sort(function () {
 	return 0.25 - Math.random()
 });
-
-
 
 
 /*
@@ -61,7 +55,7 @@ shuffle();
 */
 function generateCard() {
 
-	for (let i = 0; i < 16; i++) {
+	for (let i = 0; i < cards.length; i++) {
 		let list = document.createElement("li");
 
 		deck.appendChild(list);
@@ -84,7 +78,7 @@ Shuffle(cards);
 
 let allCards = document.querySelectorAll('.card');
 let openCards = [];
-
+let matched = [];
 
 allCards.forEach(function (card) {
 	card.addEventListener('click', function (e) {
@@ -95,7 +89,7 @@ allCards.forEach(function (card) {
 
 			if (openCards.length == 2) {
 
-				//checking to see if the cards match
+				//if a match
 				if (openCards[0].innerHTML === openCards[1].innerHTML) {
 
 					openCards[0].classList.add('match');
@@ -105,8 +99,14 @@ allCards.forEach(function (card) {
 					openCards[1].classList.add('match');
 					openCards[1].classList.add('open');
 					openCards[1].classList.add('show');
+					
+					
+					if(openCards.length == 16){
+						console.log('game over');
+					}
+					
+					//openCards = [];
 
-					openCards = [];
 				} else {
 
 					//no match
@@ -115,8 +115,8 @@ allCards.forEach(function (card) {
 							card.classList.remove('open', 'show');
 						});
 
-					}, 1500);
-
+					}, 1000);
+					
 					openCards = [];
 					moves += 1;
 					moveCounter.innerHTML = moves;
@@ -125,40 +125,51 @@ allCards.forEach(function (card) {
 
 				starCounter();
 			}
+
 		}
 	});
 });
+//check for match totals
+/*function gameOver(matched){
+	matched = allCards.getElementsByClassName('match');
+					
+	console.log (matched);
 
-
-//Thanks to fellow Fender Matthew Crawford's walkthrough, I utilized style.display property and his for of for statement to work.https://matthewcranford.com/memory-game-walkthrough-part-5-moves-stars/
+	
+	}
+*/
+//Thanks to fellow Fender Matthew Crawford's walkthrough, I utilized style.display property and his for of for LOOP to check the moves to star ration.https://matthewcranford.com/memory-game-walkthrough-part-5-moves-stars/
 
 let stars = document.querySelectorAll('.stars li');
 
 function starCounter() {
 
-for (let a = 0; a<20; a++){
-	if (moves > 10) {
+	for (let a = 0; a < 20; a++) {
+		if (moves > 10) {
 
-		console.log(stars);
+	
 
-		for (star of stars) {
-			stars[2].style.display = 'none';
-		}
+			for (star of stars) {
+				stars[2].style.display = 'none';
+			}
 
-	} else if (moves > 8) {
+		} else if (moves > 8) {
 
-		for (star of stars) {
-			stars[1].style.display = 'none';
-		}
-	} else if (moves > 5){
-		for (star of stars) {
-			stars[0].style.display = 'none';
+			for (star of stars) {
+				stars[1].style.display = 'none';
+			}
+		} else if (moves > 5) {
+			for (star of stars) {
+				stars[0].style.display = 'none';
+			}
 		}
 	}
-}
 
 }
 
 
 
+//game over
 
+
+//gameOver();
