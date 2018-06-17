@@ -105,7 +105,7 @@ allCards.forEach(function (card) {
 						console.log('game over');
 					}
 					
-					//openCards = [];
+					openCards = [];
 
 				} else {
 
