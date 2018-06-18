@@ -144,35 +144,40 @@ allCards.forEach(function (card) {
 	
 	}
 */
-//Thanks to fellow Fender Matthew Crawford's walkthrough, I utilized style.display property and his for of for LOOP to check the moves to star ration.https://matthewcranford.com/memory-game-walkthrough-part-5-moves-stars/
+//Thanks to fellow Fender Matthew Cranford's walkthrough, I utilized style.display property and his for of for LOOP to check the moves to star ration.https://matthewcranford.com/memory-game-walkthrough-part-5-moves-stars/
 
 let stars = document.querySelectorAll('.stars li');
+let info = document.querySelectorAll('.fa fa-star');
+let starCount = 3;
 
 function starCounter() {
 
 	for (let a = 0; a < 20; a++) {
 		if (moves > 10) {
 
-
-
 			for (star of stars) {
 				stars[2].style.display = 'none';
 				//stars[2].style.display = 'none';
+				starCount=0;
 			}
 
 		} else if (moves > 8) {
 
 			for (star of stars) {
 				stars[1].style.display = 'none';
+				starCount = 1;
 			}
 		} else if (moves > 5) {
 			for (star of stars) {
 				stars[0].style.display = 'none';
+				starCount = 2;
+				
 			}
 		}
 	}
-
 }
+
+
 
 
 
@@ -183,27 +188,27 @@ function gameOver() {
 	if (matches.length === cards.length) {
 		clearInterval(running);
 		modal.style.display = "block";
-		if (stars >= 2) {
+		if (starCount >= 2) {
 
-			modalText.innerText = `Congratulations! You finished the game in ${moves} moves in ${seconds} seconds. You've earned ${stars} stars! What would you like to do next?`;
+			modalText.innerText = `Congratulations! You finished the game in ${moves} moves in ${seconds} seconds. You've earned ${starCount} stars! What would you like to do next?`;
 		} else {
-			
-			modalText.innerText = `Congratulations! You finished the game in ${moves} moves in ${seconds} seconds. You've earned ${stars} star! What would you like to do next?`;
-			
+
+			modalText.innerText = `Congratulations! You finished the game in ${moves} moves in ${seconds} seconds. You've earned ${starCount} star! What would you like to do next?`;
+
 		}
 	}
 }
 
-newGameBtn.addEventListener("click", function(){
+newGameBtn.addEventListener("click", function () {
 	modal.style.display = "none";
-	
-	window.location.reload(false);
-	
-});
-	
 
-endGameBtn.addEventListener("click", function(){
-	modal.style.display="none";
+	window.location.reload(false);
+
+});
+
+
+endGameBtn.addEventListener("click", function () {
+	modal.style.display = "none";
 	window.close();
-	
+
 })
