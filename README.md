@@ -3,10 +3,10 @@ Memory, also commonly known as Concentration, is a classic memory-based card gam
 
 ## Table of Contents
 
-* [](#Project Requirement)
-* [](#Built With)
+* (##Requirement)
+* [](#Built-With)
 
-## Project Requirement
+## Requirement
 
 Build a complete matching game, played by the user in the browser.
 
