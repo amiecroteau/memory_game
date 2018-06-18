@@ -15,9 +15,18 @@ const deck = document.querySelector('.deck');
 const moveCounter = document.querySelector('.moves');
 let moves = 0;
 
+let matches = document.getElementsByClassName("match");
+let modal = document.getElementById("end-modal");
+let modalText = document.getElementById("end-text");
+const newGameBtn = document.getElementById("newGame");
+const endGameBtn = document.getElementById("closeGame");
+let timer = document.querySelector(".timer");
+let seconds = 0;
+let running;
+
 //refresh game
 const refresh = document.querySelector('.restart');
-refresh.addEventListener('click', function restart () {
+refresh.addEventListener('click', function restart() {
 	window.location.reload(false);
 });
 
@@ -99,9 +108,9 @@ allCards.forEach(function (card) {
 					openCards[1].classList.add('match');
 					openCards[1].classList.add('open');
 					openCards[1].classList.add('show');
-					
-					
-					
+
+
+
 					openCards = [];
 
 				} else {
@@ -113,7 +122,7 @@ allCards.forEach(function (card) {
 						});
 
 					}, 1000);
-					
+
 					openCards = [];
 					moves += 1;
 					moveCounter.innerHTML = moves;
@@ -122,7 +131,7 @@ allCards.forEach(function (card) {
 
 				starCounter();
 			}
-
+			gameOver();
 		}
 	});
 });
@@ -144,10 +153,11 @@ function starCounter() {
 	for (let a = 0; a < 20; a++) {
 		if (moves > 10) {
 
-	
+
 
 			for (star of stars) {
 				stars[2].style.display = 'none';
+				//stars[2].style.display = 'none';
 			}
 
 		} else if (moves > 8) {
@@ -166,7 +176,34 @@ function starCounter() {
 
 
 
-//game over
+//once all matches are found a modal opens up and the timer stops
 
 
-//gameOver();
+function gameOver() {
+	if (matches.length === cards.length) {
+		clearInterval(running);
+		modal.style.display = "block";
+		if (stars >= 2) {
+
+			modalText.innerText = `Congratulations! You finished the game in ${moves} moves in ${seconds} seconds. You've earned ${stars} stars! What would you like to do next?`;
+		} else {
+			
+			modalText.innerText = `Congratulations! You finished the game in ${moves} moves in ${seconds} seconds. You've earned ${stars} star! What would you like to do next?`;
+			
+		}
+	}
+}
+
+newGameBtn.addEventListener("click", function(){
+	modal.style.display = "none";
+	
+	window.location.reload(false);
+	
+});
+	
+
+endGameBtn.addEventListener("click", function(){
+	modal.style.display="none";
+	window.close();
+	
+})
