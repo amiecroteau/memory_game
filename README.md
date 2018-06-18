@@ -3,20 +3,18 @@ Memory, also commonly known as Concentration, is a classic memory-based card gam
 
 ## Table of Contents
 
-* [](#instructions)
-* [Contributing](#contributing)
+* [Project Requirement](#Project Requirement)
+* [Built With](#Built With)
 
-## Instructions
+## Project Requirement
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+Build a complete matching game, played by the user in the browser.
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Built With
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+* HTML 5
+* CSS3
+* JavaScript - including ES6 syntax
+* Font Awesome - https://fontawesome.com/
 
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
