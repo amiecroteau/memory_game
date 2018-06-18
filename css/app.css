@@ -17,7 +17,7 @@ body {
 }
 
 body {
-    background: #ADE6FF; /* Background pattern from Subtle Patterns */
+    background: linear-gradient(#F7F8E0 20%,  #00BFFF 100% ); /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
 }
 
@@ -40,7 +40,7 @@ h1 {
 .deck {
     width: 660px;
     min-height: 680px;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    background: linear-gradient(160deg, #FBFBEF 0%, #A9F5E1 100%);
     padding: 32px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
@@ -54,10 +54,15 @@ h1 {
 .deck .card {
     height: 125px;
     width: 125px;
-    background: #2e3d49;
+	border: 3px solid  #C1C1C1 ;
+    background: url('../img/marguerite-daisy-beautiful-beauty.jpg');
+	/*pexels.com photo. https://www.pexels.com/photo/white-and-yellow-flower-with-green-stems-36764*/
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: right;
     font-size: 0;
     color: #ffffff;
-    border-radius: 8px;
+    border-radius: 50%;
     cursor: pointer;
     display: flex;
     justify-content: center;

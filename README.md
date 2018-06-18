@@ -1,8 +1,9 @@
 # Memory Game Project
+Memory, also commonly known as Concentration, is a classic memory-based card game in which all the cards in the deck are laid face down, and then two cards are flipped face up. The object of the game is to turn over matching pairs of cards. 
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [](#instructions)
 * [Contributing](#contributing)
 
 ## Instructions
@@ -18,3 +19,4 @@ For specific, detailed instructions, look at the project instructions in the [Ud
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+

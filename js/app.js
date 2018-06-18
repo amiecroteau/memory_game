@@ -1,11 +1,13 @@
+//set variables
+
 const card = document.getElementsByClassName('card');
 const cards = ["fa-diamond", "fa-diamond",
 	"fa-paper-plane-o", "fa-paper-plane-o",
 	"fa-anchor", "fa-anchor",
 	"fa-bolt", "fa-bolt",
-	"fa-cube", "fa-cube",
+	"fa-sun-o", "fa-sun-o",
 	"fa-leaf", "fa-leaf",
-	"fa-bomb", "fa-bomb",
+	"fa-photo", "fa-photo",
 	"fa-bicycle", "fa-bicycle",
 
 ];
@@ -25,34 +27,36 @@ const endGameBtn = document.getElementById("closeGame");
 let running;
 
 //followed fellow fender on slack Chris N for his timer post
+
+//timer 
 let sec = 0;
 let min = 0;
 let timer;
 
 window.addEventListener("load", function startTimer() {
-timer = setInterval(insertTime, 1500);
+	timer = setInterval(insertTime, 1500);
 });
 
 function stopTimer() {
-clearInterval(timer);
-sec = 0;
-min = 0;
+	clearInterval(timer);
+	sec = 0;
+	min = 0;
 }
 
 function insertTime() {
-sec++;
+	sec++;
 
-if (sec < 10) {
-sec = `0${sec}`;
-}
+	if (sec < 10) {
+		sec = `0${sec}`;
+	}
 
-if (sec >= 60) {
-min++;
-sec = "00";
-}
+	if (sec >= 60) {
+		min++;
+		sec = "00";
+	}
 
-// display time
-document.querySelector('.timer-output').innerHTML = "0" + min + ":" + sec;
+	// display time
+	document.querySelector('.timer-output').innerHTML = "0" + min + ":" + sec;
 }
 //refresh game
 const refresh = document.querySelector('.restart');
@@ -93,6 +97,8 @@ return array;
 
 shuffle();
 */
+
+//create cards
 function generateCard() {
 
 	for (let i = 0; i < cards.length; i++) {
@@ -112,9 +118,11 @@ function generateCard() {
 
 generateCard();
 
+//shuffle newest cards
 Shuffle(cards);
 
 //The following logic was helped along after watching the Mike Wales Youtube walkthrough
+//compares matches
 
 let allCards = document.querySelectorAll('.card');
 let openCards = [];
@@ -140,16 +148,18 @@ allCards.forEach(function (card) {
 					openCards[1].classList.add('open');
 					openCards[1].classList.add('show');
 
-
-
 					openCards = [];
+
+
 
 				} else {
 
 					//no match
 					setTimeout(function (openCards) {
 						allCards.forEach(function (card) {
+
 							card.classList.remove('open', 'show');
+
 						});
 
 					}, 1000);
@@ -211,7 +221,7 @@ function starCounter() {
 
 //once all matches are found a modal opens up and the timer stops
 
-
+//pop up modal
 
 function gameOver() {
 	if (matches.length === cards.length) {
@@ -229,7 +239,7 @@ function gameOver() {
 	}
 }
 
-
+//play again button
 
 newGameBtn.addEventListener("click", function () {
 	modal.style.display = "none";
@@ -237,7 +247,7 @@ newGameBtn.addEventListener("click", function () {
 
 });
 
-
+//end game button
 endGameBtn.addEventListener("click", function () {
 	modal.style.display = "none";
 	window.close();
