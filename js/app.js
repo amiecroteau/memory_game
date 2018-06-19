@@ -33,7 +33,7 @@ let sec = 0;
 let min = 0;
 let timer;
 
-window.addEventListener("load", function startTimer() {
+deck.addEventListener("click", function startTimer() {
 	timer = setInterval(insertTime, 1500);
 });
 
