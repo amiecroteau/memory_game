@@ -2,7 +2,7 @@
 Memory, also commonly known as Concentration, is a classic memory-based card game in which all the cards in the deck are laid face down, and then two cards are flipped face up. The object of the game is to turn over matching pairs of cards. 
 
 
-+## Table of Contents
+## Table of Contents
 +  - [Memory Game](#memory-game)
 +  - [Table of Contents](#table-of-contents)
 +  - [Requirement](#requirement)
@@ -11,7 +11,7 @@ Memory, also commonly known as Concentration, is a classic memory-based card gam
 +  - [How to Play](#how-to-play)
 +  - [Author](#author)
 +  - [Acknowledgements](#acknowledgements)
-+  - [Image/Icon Sources](#imageicon-sources)
++  - [Image and Icon Sources](#imageicon-sources)
 
 ## Requirement
 
