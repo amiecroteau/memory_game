@@ -17,7 +17,7 @@ body {
 }
 
 body {
-    background: linear-gradient(#F7F8E0 20%,  #00BFFF 100% ); /* Background pattern from Subtle Patterns */
+    background: linear-gradient(#F7F8E0 20%,  #00BFFF 100% ); 
     font-family: 'Coda', cursive;
 }
 

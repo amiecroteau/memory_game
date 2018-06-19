@@ -151,18 +151,20 @@ allCards.forEach(function (card) {
 					openCards = [];
 
 
-
+					//no match
 				} else {
 
-					//no match
+
+
 					setTimeout(function (openCards) {
+
 						allCards.forEach(function (card) {
 
 							card.classList.remove('open', 'show');
 
 						});
 
-					}, 1000);
+					}, 800);
 
 					openCards = [];
 					moves += 1;
